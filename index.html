@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>phone-hunter-api</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <header class="bg-[#0D6EFD0D]">
+        <div class="max-w-7xl mx-auto">
+            <nav class="flex justify-around py-4">
+                <h2 class="text-2xl font-bold text-[#403F3F]">Hot Gadgets</h2>
+                <button class="text-xl font-bold px-4 py-2 bg-[#0D6EFD] text-white rounded-lg">Sign Up</button>
+            </nav>
+            <div class="py-10 text-center">
+                <h2 class="text-center text-6xl font-bold">Apple Iphone 13 Pro Max</h2>
+                <p class="text-[18px] py-5">There are many variations of passages of Lorem Ipsum available, but the
+                    majority
+                    <br>
+                    have
+                    suffered
+                    alteration
+                    in some form, by injected humou.
+                </p>
+                <button class="text-xl font-bold px-4 py-2 bg-[#0D6EFD] text-white rounded-lg">Buy Now</button>
+            </div>
+            <img class="mx-auto" src="img/Group 48095420.png" alt="">
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto my-11">
+        <h2 class="text-3xl text-[#100F0F] text-center font-bold mt-16">Search Your Phone</h2>
+        <div class="flex justify-center my-5">
+            <input id="searchInput" class="input input-bordered join-item px-32" placeholder="Search Phone" />
+            <button onclick="handelSearch()" id="searchBtn"
+                class="btn join-item rounded-lg px-6 font-bold text-xl bg-[#0D6EFD] text-white">Search</button>
+        </div>
+
+        <!-- spinner  -->
+
+
+        <section>
+
+            <div id="loading-spinner" class="text-center my-40 hidden">
+                <span class="loading loading-spinner text-primary loading-lg"></span>
+            </div>
+
+            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+            </div>
+            <!-- show all button  -->
+            <div id="show-all-container" class="hidden">
+                <button class="btn btn-accent bg-[#0D6EFD] text-white text-xl">Show All</button>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
