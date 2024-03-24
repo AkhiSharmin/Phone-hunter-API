@@ -1,5 +1,5 @@
 
-const loadPhone = async (searchText, isShowAll) => {
+const loadPhone = async (searchText = '13', isShowAll) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
   const data = await res.json()
   const phones = data.data
@@ -36,7 +36,7 @@ const displayPhone = (phones, isShowAll) => {
           <h2 class="card-title">${phone.phone_name}</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+            <button onclick="handelShowDetails('${phone.slug}')" class="btn text-[18px] bg-[#0D6EFD] text-white">Show Details</button>
           </div>
         </div>
         `
@@ -50,7 +50,39 @@ const displayPhone = (phones, isShowAll) => {
 }
 
 
+const handelShowDetails = async (id) => {
 
+  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+  const data = await res.json();
+  const phone = data.data
+  showPhoneDetails(phone)
+}
+
+
+const showPhoneDetails = (phone) => {
+  console.log(phone);
+  const phoneName = document.getElementById('show-detail-phone-name')
+  phoneName.innerText = phone.name
+  const showDetailContainer = document.getElementById('show-detail-container')
+
+  showDetailContainer.innerHTML = `
+    <img class="py-5" src="${phone.image}" alt="" />
+    <p class="font-bold">Brand: ${phone.brand}</p>
+    <p><span class="font-bold">Storage:</span> ${phone?.mainFeatures?.
+      storage
+    }</p>
+    <p><span class="font-bold">DisplaySize:</span> ${phone?.mainFeatures?.displaySize}</p>
+    <p><span class="font-bold">ChipSet:</span> ${phone?.mainFeatures?.chipSet}</p>
+
+    <p><span class="font-bold">Memory:</span> ${phone?.mainFeatures?.memory}</p>
+    <p><span class="font-bold">ChipSet:</span> ${phone?.slug}</p>
+    <p><span class="font-bold">Release Date:</span> ${phone.releaseDate}</p>
+    <p><span class="font-bold">GPS:</span> ${phone?.others?.GPS}</p>
+  `
+
+  //show the modal
+  show_details_modal.showModal()
+}
 
 
 // const searchBtn = document.getElementById('searchBtn')
@@ -87,4 +119,4 @@ const handelShowAll = () => {
 
 
 
-// loadPhone()
+loadPhone()
